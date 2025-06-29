@@ -44,10 +44,10 @@ public class CheckInCommand implements Command {
     if (metroCardNumber == null || metroCardNumber.isEmpty()) {
       throw new InvalidMetroCardNumberException(metroCardNumber);
     }
-    if (passengerType == null || passengerType.isEmpty() || !CommonUtil.isValidEnum(PassengerType.class, passengerType)) {
+    if (passengerType == null || passengerType.isEmpty() || CommonUtil.isInvalidEnum(PassengerType.class, passengerType)) {
       throw new InvalidPassengerTypeException(passengerType);
     }
-    if (stationName == null || stationName.isEmpty() || !CommonUtil.isValidEnum(StationName.class, stationName)) {
+    if (stationName == null || stationName.isEmpty() || CommonUtil.isInvalidEnum(StationName.class, stationName)) {
       throw new InvalidStationNameException(stationName);
     }
   }
