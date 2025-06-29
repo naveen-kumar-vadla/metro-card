@@ -25,7 +25,7 @@ public class AppConstants {
   public static final String PRINT_SUMMARY = "PRINT_SUMMARY";
 
   public static final String SPACE_DELIMITER = " ";
-  public static final String STATION_SUMMARY_FORMAT = "TOTAL_COLLECTION %s %d %d ";
+  public static final String STATION_SUMMARY_FORMAT = "TOTAL_COLLECTION %s %d %d";
   public static final String PASSENGER_TYPE_SUMMARY = "PASSENGER_TYPE_SUMMARY";
 
   public static final List<StationName> STATION_SUMMARY_ORDER = Arrays.asList(StationName.CENTRAL, StationName.AIRPORT);
