@@ -4,7 +4,7 @@ import com.example.geektrust.logger.Logger;
 import com.example.geektrust.service.StationManager;
 
 public class PrintSummaryCommand implements Command {
-  public static Command create() {
+  public static PrintSummaryCommand create() {
     return new PrintSummaryCommand();
   }
 

@@ -24,7 +24,7 @@ public class CheckInCommand implements Command {
     this.stationName = stationName;
   }
 
-  public static Command create(List<String> params) {
+  public static CheckInCommand create(List<String> params) {
     String metroCardNumber = params.get(INDEX_1);
     String passengerType = params.get(INDEX_2);
     String stationName = params.get(INDEX_3);

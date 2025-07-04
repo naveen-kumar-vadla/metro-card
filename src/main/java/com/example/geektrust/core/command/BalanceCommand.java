@@ -19,7 +19,7 @@ public class BalanceCommand implements Command {
     this.balanceAmount = balanceAmount;
   }
 
-  public static Command create(List<String> params) {
+  public static BalanceCommand create(List<String> params) {
     String metroCardNumber = params.get(INDEX_1);
     String balanceAmount = params.get(INDEX_2);
     return new BalanceCommand(metroCardNumber, balanceAmount);
