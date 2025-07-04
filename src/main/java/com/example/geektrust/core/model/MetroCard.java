@@ -59,6 +59,9 @@ public class MetroCard {
   }
 
   private boolean isReturnJourney(StationName from) {
-    return lastJourney != null && lastJourney.getTo().equals(from) && !lastJourney.isDiscounted();
+    if (lastJourney == null) return false;
+    if (lastJourney.getTo() == null) return false;
+    if (!lastJourney.getTo().equals(from)) return false;
+    return !lastJourney.isDiscounted();
   }
 }

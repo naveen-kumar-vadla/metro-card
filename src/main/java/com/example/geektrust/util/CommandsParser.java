@@ -7,13 +7,21 @@ import com.example.geektrust.core.command.Command;
 import com.example.geektrust.core.command.PrintSummaryCommand;
 import com.example.geektrust.exception.UnknownCommandException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 
 import static com.example.geektrust.AppConstants.*;
 
 public class CommandsParser {
+  private final Map<String, Function<List<String>, Command>> commandCreators;
+
+  public CommandsParser() {
+    this.commandCreators = new HashMap<>();
+    this.commandCreators.put(BALANCE, BalanceCommand::create);
+    this.commandCreators.put(CHECK_IN, CheckInCommand::create);
+    this.commandCreators.put(PRINT_SUMMARY, params -> PrintSummaryCommand.create());
+  }
+
   public List<Command> parseCommands(List<String> inputLines) {
     List<Command> commands = new ArrayList<>();
     for (String line : inputLines) {
@@ -25,15 +33,10 @@ public class CommandsParser {
 
   private Command extractCommand(List<String> params) {
     String commandType = params.get(ZERO);
-    switch (commandType) {
-      case BALANCE:
-        return BalanceCommand.create(params);
-      case CHECK_IN:
-        return CheckInCommand.create(params);
-      case PRINT_SUMMARY:
-        return PrintSummaryCommand.create();
-      default:
-        throw new UnknownCommandException(commandType);
+    Function<List<String>, Command> creator = commandCreators.get(commandType);
+    if (creator == null) {
+      throw new UnknownCommandException(commandType);
     }
+    return creator.apply(params);
   }
 }
